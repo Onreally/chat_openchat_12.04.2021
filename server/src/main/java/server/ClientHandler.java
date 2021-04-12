@@ -98,7 +98,12 @@ public class ClientHandler {
                     //обработать SocketTimeoutException
 
                 } catch (SocketTimeoutException e){
-                    
+                    server.broadcastMsg(this,"/end");
+                    try {
+                        socket.close();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                 }
                 catch (RuntimeException e) {
                     System.out.println(e.getMessage());
